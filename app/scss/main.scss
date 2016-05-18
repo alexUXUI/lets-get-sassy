@@ -1,0 +1,158 @@
+// color palette
+$color-tab: purple;
+$button: gold;
+$color-tab-before: gold;
+$color-tab-before-hover: tomato;
+$none: transparent;
+
+// button states: before after hover etc
+@mixin buttonStates($color-tab, $color-tab-before, $color-tab-before-hover){
+  &::after {
+    border-color: $none $none $color-tab $none;
+  }
+  &::before {
+    border-color: $color-tab-before $none $color-tab-before $color-tab-before;
+  }
+  &:hover::before {
+    border-color: $color-tab-before-hover $none $color-tab-before-hover $none;
+  }
+  &:hover::after {
+    border-color: $color-tab-before $none $color-tab-before $none;
+  }
+  &:hover {
+    background-color: $color-tab-before-hover;
+  }
+}
+
+// base button class
+.btn {
+  @include buttonStates($button, $button, $button);
+  height: 40px;
+  width: 100px;
+  font-size: 12px;
+  color: white;
+  border:none;
+  border-radius:10px;
+  position: relative;
+  &::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 15px 15px;
+    border-color: $none $none $none $none;
+    border-radius: 0px 0px 10px 0px;
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    z-index: 1;
+  }
+  &::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 15px 0 0;
+    border-color: $none $none $none $none;
+    border-radius: 0 0 0 0;
+    position: absolute; bottom: 0px;
+    right: 0;
+    border-radius: 0px 0px 0px 0px;
+    z-index: 9;
+  }
+}
+
+/*
+  create instances of the button class by:
+  - @extend(ing) the .btn class
+  - @include(ing) the buttonStates() function and passing it 3 values
+  - color for the button (must be the same as $color-tab-before)
+*/
+
+.primary {
+  @extend .btn;
+  @include buttonStates($color-tab, lavender, $color-tab-before-hover);
+  background-color:lavender;
+}
+
+.secondary {
+  @extend .btn;
+  @include buttonStates(cornflowerblue, sienna, cornflowerblue);
+  background-color:sienna;
+}
+
+.tertiary {
+  @extend .btn;
+  @include buttonStates(gold, slategray, gold);
+  background-color:slategray;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////
+
+body {
+  color: cornflowerblue;
+}
+
+body {
+  color: red;
+}
+
+@mixin center(){
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pinkText {
+  color: pink;
+}
+
+.parent {
+  height: 500px;
+  width: 500px;
+  background-color: tomato;
+  @include center();
+}
+
+.child {
+  height: 300px;
+  width: 300px;
+  background-color: gold;
+  @include center();
+
+}
+
+.grand-child {
+  height: 150px;
+  width: 150px;
+  background-color: cornflowerblue;
+  @extend .pinkText;
+}
