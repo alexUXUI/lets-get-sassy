@@ -1,2 +1,118 @@
+.btn, .primary, .secondary, .tertiary {
+  height: 40px;
+  width: 100px;
+  font-size: 12px;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  position: relative; }
+  .btn::after, .primary::after, .secondary::after, .tertiary::after {
+    border-color: transparent transparent gold transparent; }
+  .btn::before, .primary::before, .secondary::before, .tertiary::before {
+    border-color: gold transparent gold gold; }
+  .btn:hover::before, .primary:hover::before, .secondary:hover::before, .tertiary:hover::before {
+    border-color: gold transparent gold transparent; }
+  .btn:hover::after, .primary:hover::after, .secondary:hover::after, .tertiary:hover::after {
+    border-color: gold transparent gold transparent; }
+  .btn:hover, .primary:hover, .secondary:hover, .tertiary:hover {
+    background-color: gold; }
+  .btn::after, .primary::after, .secondary::after, .tertiary::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 15px 15px;
+    border-color: transparent transparent transparent transparent;
+    border-radius: 0px 0px 10px 0px;
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    z-index: 1; }
+  .btn::before, .primary::before, .secondary::before, .tertiary::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 15px 0 0;
+    border-color: transparent transparent transparent transparent;
+    border-radius: 0 0 0 0;
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    border-radius: 0px 0px 0px 0px;
+    z-index: 9; }
+
+/*
+  create instances of the button class by:
+  - @extend(ing) the .btn class
+  - @include(ing) the buttonStates() function and passing it 3 values
+  - color for the button (must be the same as $color-tab-before)
+*/
+.primary {
+  background-color: lavender; }
+  .primary::after {
+    border-color: transparent transparent purple transparent; }
+  .primary::before {
+    border-color: lavender transparent lavender lavender; }
+  .primary:hover::before {
+    border-color: tomato transparent tomato transparent; }
+  .primary:hover::after {
+    border-color: lavender transparent lavender transparent; }
+  .primary:hover {
+    background-color: tomato; }
+
+.secondary {
+  background-color: sienna; }
+  .secondary::after {
+    border-color: transparent transparent cornflowerblue transparent; }
+  .secondary::before {
+    border-color: sienna transparent sienna sienna; }
+  .secondary:hover::before {
+    border-color: cornflowerblue transparent cornflowerblue transparent; }
+  .secondary:hover::after {
+    border-color: sienna transparent sienna transparent; }
+  .secondary:hover {
+    background-color: cornflowerblue; }
+
+.tertiary {
+  background-color: slategray; }
+  .tertiary::after {
+    border-color: transparent transparent gold transparent; }
+  .tertiary::before {
+    border-color: slategray transparent slategray slategray; }
+  .tertiary:hover::before {
+    border-color: gold transparent gold transparent; }
+  .tertiary:hover::after {
+    border-color: slategray transparent slategray transparent; }
+  .tertiary:hover {
+    background-color: gold; }
+
+body {
+  color: cornflowerblue; }
+
 body {
   color: red; }
+
+.pinkText, .grand-child {
+  color: pink; }
+
+.parent {
+  height: 500px;
+  width: 500px;
+  background-color: tomato;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.child {
+  height: 300px;
+  width: 300px;
+  background-color: gold;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.grand-child {
+  height: 150px;
+  width: 150px;
+  background-color: cornflowerblue; }
